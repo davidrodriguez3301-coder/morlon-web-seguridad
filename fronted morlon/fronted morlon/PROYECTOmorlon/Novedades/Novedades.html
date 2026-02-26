@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gestión de Novedades | Morlon Seguridad</title>
+
+  <!-- Bootstrap y FontAwesome -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/estilos.css">
+
+  <style>
+    .content-box { max-width: 900px; margin: auto; background-color: #f8f9fa; }
+    .bienvenidos { font-weight: bold; color: #1b1b1b; }
+    .table th { vertical-align: middle; }
+    .invalid-feedback { font-size: 0.9em; }
+  </style>
+</head>
+
+<body class="body-main">
+
+  <!-- ENCABEZADO -->
+  <div class="container text-center mt-3">
+    <div class="row w-100 align-items-center">
+      <div class="col-3 text-start">
+        <a class="navbar-brand" href="../PrincipalIndex/index.html">
+          <img src="../assets/img/LOGO.JPG" alt="Logo Morlon" style="height: 60px; border-radius: 60%;">
+        </a>
+      </div>
+      <div class="col-6">
+        <h1 class="bienvenidos">Gestión de Novedades</h1>
+      </div>
+      <div class="col-3 text-end">
+        <a class="nav-link text-black" href="../Campos/campos.html">
+          Volver <i class="fas fa-arrow-left ms-1"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="content-wrapper">
+    <div class="container mt-4">
+      <div class="content-box p-4 shadow-lg rounded bg-light">
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h2 class="mb-0">Listado de Novedades</h2>
+          <button class="btn btn-success btn-sm" id="btnAgregar">
+            <i class="fas fa-plus"></i> Nueva Novedad
+          </button>
+        </div>
+
+        <!-- Búsqueda -->
+        <div class="row mb-3 align-items-center">
+          <div class="col-md-6 mb-2 mb-md-0">
+            <input
+              type="text"
+              id="buscarInput"
+              class="form-control"
+              placeholder="Buscar por id, nombre, tipo o clave..."
+            >
+          </div>
+          <div class="col-md-6 text-md-end text-center">
+            <button class="btn btn-secondary btn-sm" id="btnVerTodo">
+              <i class="fas fa-list"></i> Visualizar todas
+            </button>
+          </div>
+        </div>
+
+        <!-- Tabla Novedades -->
+        <div class="table-responsive">
+          <table class="table table-striped align-middle text-center">
+            <thead class="table-dark">
+              <tr>
+                <th>Id Novedad</th>
+                <th>Nombre de novedad</th>
+                <th>Tipo de novedad</th>
+                <th>Clave de novedad</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="tablaNovedades">
+              <!-- Se llena desde novedades.js -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Paginación -->
+        <nav>
+          <ul class="pagination justify-content-center mt-3" id="paginacion"></ul>
+        </nav>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- MODAL CREAR / EDITAR -->
+  <div class="modal fade" id="novedadModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content shadow-lg rounded">
+        <div class="modal-header bg-dark text-white">
+          <h5 class="modal-title" id="modalTitle">Nueva Novedad</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+          <form id="formNovedad" class="p-2" novalidate>
+            <input type="hidden" id="isEdit" value="false">
+
+            <div class="row gy-3">
+
+              <!-- ID NOVEDAD -->
+              <div class="col-md-4">
+                <label for="idNovedad" class="form-label">ID Novedad</label>
+                <input
+                  type="text"
+                  id="idNovedad"
+                  class="form-control"
+                  placeholder="Ej: N001"
+                  maxlength="6"
+                  required
+                >
+                <div class="invalid-feedback">Debe ingresar un ID válido (ej: N001).</div>
+              </div>
+
+              <!-- NOMBRE DE NOVEDAD -->
+              <div class="col-md-8">
+                <label for="nombre_novedad" class="form-label">Nombre de la novedad</label>
+                <select id="nombre_novedad" class="form-select" required>
+                  <option value="">Seleccione...</option>
+                  <!-- Valores usados por tu BD -->
+                  <option value="Llegada Tarde">Llegada Tarde</option>
+                  <option value="Ausencia Injustificada">Ausencia Injustificada</option>
+                  <option value="Fallo en Reporte Diario">Fallo en Reporte Diario</option>
+
+                  <!-- Valores del sistema original -->
+                  <option value="Accidente de Trabajo">Accidente de Trabajo</option>
+                  <option value="Ausencia Embarazo">Ausencia Embarazo</option>
+                  <option value="Calamidad Doméstica">Calamidad Doméstica</option>
+                  <option value="Cambio de Puesto">Cambio de Puesto</option>
+                  <option value="Cita Médica">Cita Médica</option>
+                  <option value="Compensatorio">Compensatorio</option>
+                  <option value="Descanso">Descanso</option>
+                  <option value="Disponible Oficina">Disponible Oficina</option>
+                  <option value="Enfermedad">Enfermedad</option>
+                  <option value="Estado de embriaguez">Estado de embriaguez</option>
+                  <option value="Inducción Día">Inducción Día</option>
+                  <option value="Inducción Noche">Inducción Noche</option>
+                  <option value="Incapacidad">Incapacidad</option>
+                  <option value="Licencia">Licencia</option>
+                  <option value="Otra Novedad">Otra Novedad</option>
+                  <option value="Permiso Descontable">Permiso Descontable</option>
+                  <option value="Retiro">Retiro</option>
+                  <option value="Sanción">Sanción</option>
+                  <option value="Traslado">Traslado</option>
+                  <option value="Turno Extra">Turno Extra</option>
+                  <option value="Vacaciones">Vacaciones</option>
+                </select>
+                <div class="invalid-feedback">Seleccione un nombre de novedad.</div>
+              </div>
+
+              <!-- TIPO DE NOVEDAD -->
+              <div class="col-md-6">
+                <label for="tipo_de_novedad" class="form-label">Tipo de novedad</label>
+                <select id="tipo_de_novedad" class="form-select" required>
+                  <option value="">Seleccione...</option>
+
+                  <!-- Valores reales de tu BD -->
+                  <option value="Disciplina">Disciplina</option>
+                  <option value="Asistencia">Asistencia</option>
+                  <option value="Operativa">Operativa</option>
+
+                  <!-- Valores originales -->
+                  <option value="Calamidad">Calamidad</option>
+                  <option value="Familiar">Familiar</option>
+                  <option value="Judicial">Judicial</option>
+                  <option value="Laboral">Laboral</option>
+                  <option value="Médica">Médica</option>
+                  <option value="Personal">Personal</option>
+                  <option value="Sancionatoria">Sancionatoria</option>
+                </select>
+                <div class="invalid-feedback">Seleccione un tipo de novedad.</div>
+              </div>
+
+              <!-- CLAVE -->
+              <div class="col-md-6">
+                <label for="clave_novedad" class="form-label">Clave de novedad</label>
+                <select id="clave_novedad" class="form-select" required>
+                  <option value="">Seleccione...</option>
+
+                  <!-- Valores reales BD -->
+                  <option value="DISC01">DISC01</option>
+                  <option value="ASIS01">ASIS01</option>
+                  <option value="OPER01">OPER01</option>
+
+                  <!-- Valores originales -->
+                  <option value="AE">AE</option>
+                  <option value="AT">AT</option>
+                  <option value="CD">CD</option>
+                  <option value="CM">CM</option>
+                  <option value="CP">CP</option>
+                  <option value="DIS">DIS</option>
+                  <option value="E">E</option>
+                  <option value="EE">EE</option>
+                  <option value="I">I</option>
+                  <option value="ID">ID</option>
+                  <option value="IN">IN</option>
+                  <option value="LI">LI</option>
+                  <option value="ON">ON</option>
+                  <option value="PD">PD</option>
+                  <option value="R">R</option>
+                  <option value="S">S</option>
+                  <option value="TE">TE</option>
+                  <option value="TR">TR</option>
+                  <option value="V">V</option>
+                  <option value="X">X</option>
+                </select>
+                <div class="invalid-feedback">Seleccione una clave válida.</div>
+              </div>
+
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" form="formNovedad" class="btn btn-primary">
+            <i class="fas fa-save me-1"></i> Guardar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="main-footer bg-dark text-white mt-5">
+    <div class="container py-3">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+          MORLON presta un servicio oportuno, eficaz y confiable logrando
+          satisfacer las necesidades de nuestros clientes.
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <span>&copy; 2024 MORLON Cía. de Seguridad Portuaria Ltda.</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- Seguridad del módulo -->
+  <script src="../js/seguridad.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      verificarAccesoModulo("Novedades", { redirigirSiNo: true });
+      bloquearBotonesParaVisitante();
+    });
+  </script>
+
+  <!-- Código del módulo -->
+  <script type="module" src="../js/Novedades/novedades.js"></script>
+
+</body>
+</html>
+

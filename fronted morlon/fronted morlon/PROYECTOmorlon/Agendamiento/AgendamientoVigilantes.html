@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asignación de Vigilantes a Clientes - Morlon Seguridad</title>
+
+  <!-- Estilos -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/estilos3.css">
+</head>
+
+<body class="bg-light">
+  <!-- ============================================================
+       ENCABEZADO
+  ============================================================ -->
+  <div class="container text-center mt-3">
+    <div class="row w-100 align-items-center">
+      <div class="col-3 text-start">
+        <a class="navbar-brand" href="../PrincipalIndex/index.html">
+          <img src="../assets/img/LOGO.JPG" alt="Logo Morlon" style="height: 60px; border-radius: 50%;">
+        </a>
+      </div>
+      <div class="col-6">
+        <h1 class="fw-bold">Asignación de Vigilantes a Clientes</h1>
+      </div>
+      <div class="col-3 text-end">
+        <a class="nav-link text-dark fw-semibold" href="../Agendamiento/Agendamiento.html">
+          <i class="fas fa-arrow-left me-1"></i> Volver
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       CONTENIDO PRINCIPAL
+  ============================================================ -->
+  <main class="container mt-4 contenedor-principal">
+    <div class="p-4 shadow-lg bg-white rounded">
+      <h3 class="text-center mb-4">Gestión de Asignaciones</h3>
+
+      <!-- Selección de cliente -->
+      <div class="d-flex flex-wrap justify-content-center align-items-center gap-3 mb-4">
+        <select id="clienteSelect" class="form-select w-auto">
+          <option value="">Seleccione cliente...</option>
+        </select>
+
+        <button id="btnVerAsignaciones" class="btn btn-primary fw-semibold">
+          <i class="fas fa-eye me-1"></i> Ver Asignaciones
+        </button>
+
+        <button id="btnNuevaAsignacion" class="btn btn-success fw-semibold">
+          <i class="fas fa-plus me-1"></i> Nueva Asignación
+        </button>
+      </div>
+
+      <!-- ============================================================
+           TABLA DE ASIGNACIONES
+      ============================================================ -->
+      <div class="table-responsive">
+        <table class="table table-bordered align-middle text-center">
+          <thead class="table-dark">
+           <tr>
+          <th>ID</th>
+          <th>Vigilante</th>
+          <th>Tipo de Contrato</th>
+          <th>Fecha Inicio</th>
+          <th>Fecha Fin</th>
+          <th>Observaciones</th>
+          <th>Acciones</th>
+          </tr>
+          </thead>
+
+          <tbody id="tablaAsignaciones">
+            <tr>
+              <td colspan="7" class="text-muted">Seleccione un cliente para ver sus asignaciones.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- ============================================================
+       MODAL PARA NUEVA / EDITAR ASIGNACIÓN
+  ============================================================ -->
+  <div class="modal fade" id="modalAsignacion" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-dark text-white">
+          <h5 class="modal-title" id="modalTitle">Nueva Asignación</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+
+        <div class="modal-body">
+          <form id="formAsignacion">
+            <input type="hidden" id="idAsignacion" />
+
+            <div class="row gy-3 align-items-center">
+              <!-- Selección del vigilante -->
+              <div class="col-md-6">
+                <label for="idVigilante" class="form-label fw-semibold">Vigilante</label>
+                <select id="idVigilante" class="form-select" required>
+                  <option value="">Seleccione vigilante...</option>
+                </select>
+              </div>
+
+              <!-- Foto y nombre del vigilante -->
+              <div class="col-md-6 text-center">
+                <img id="fotoVigilante" 
+                     src="../assets/img/user_default.jpg" 
+                     alt="Foto del vigilante"
+                     class="rounded-circle shadow-sm border"
+                     style="width:120px; height:120px; object-fit:cover;">
+                <p class="mt-2 fw-semibold text-secondary" id="nombreVigilantePreview">Sin seleccionar</p>
+              </div>
+
+              <!-- Fechas -->
+              <div class="col-md-3">
+                <label for="fecha_inicio" class="form-label">Fecha Inicio</label>
+                <input type="date" id="fecha_inicio" class="form-control" required>
+              </div>
+
+              <div class="col-md-3">
+                <label for="fecha_fin" class="form-label">Fecha Fin</label>
+                <input type="date" id="fecha_fin" class="form-control">
+              </div>
+
+              <!-- Observaciones -->
+              <div class="col-md-12">
+                <label for="observaciones" class="form-label">Observaciones</label>
+                <textarea id="observaciones" class="form-control" rows="2"></textarea>
+              </div>
+            </div>
+
+            <!-- Botones -->
+            <div class="mt-4 d-flex justify-content-end gap-2">
+              <button type="submit" class="btn btn-success">
+                <i class="fas fa-save me-1"></i> Guardar
+              </button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                <i class="fas fa-times me-1"></i> Cancelar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SCRIPTS
+  ============================================================ -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script type="module" src="../js/Asignacion/AsignacionClienteVigilante.js"></script>
+</body>
+</html>

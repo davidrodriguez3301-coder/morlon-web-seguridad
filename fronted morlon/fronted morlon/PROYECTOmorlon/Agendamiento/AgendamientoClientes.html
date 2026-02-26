@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agendamiento - Morlon Seguridad</title>
+
+  <!-- Estilos -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/estilos3.css">
+</head>
+
+<body class="bg-light">
+  <!-- Encabezado -->
+  <div class="container text-center mt-3">
+    <div class="row w-100 align-items-center">
+      <div class="col-3 text-start">
+        <a class="navbar-brand" href="../PrincipalIndex/index.html">
+          <img src="../assets/img/LOGO.JPG" alt="Logo Morlon" style="height: 60px; border-radius: 50%;">
+        </a>
+      </div>
+      <div class="col-6">
+        <h1 class="fw-bold">Módulo de Agendamiento</h1>
+      </div>
+      <div class="col-3 text-end">
+        <a class="nav-link text-dark fw-semibold" href="../Agendamiento/Agendamiento.html">
+          <i class="fas fa-arrow-left me-1"></i> Volver
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenido principal -->
+  <main class="container mt-4 contenedor-principal">
+    <div class="p-4 shadow-lg bg-white rounded">
+      <h3 class="text-center mb-4">Programación Mensual de Vigilantes</h3>
+
+      <!-- Filtros -->
+      <div class="d-flex flex-wrap justify-content-center align-items-center gap-3 mb-3">
+        <!-- Cliente -->
+        <select id="clienteSelect" class="form-select w-auto">
+          <option value="">Seleccione cliente...</option>
+        </select>
+
+        <!-- Mes -->
+        <select id="mesSeleccionado" class="form-select w-auto">
+          <option value="1">Enero</option>
+          <option value="2">Febrero</option>
+          <option value="3">Marzo</option>
+          <option value="4">Abril</option>
+          <option value="5">Mayo</option>
+          <option value="6">Junio</option>
+          <option value="7">Julio</option>
+          <option value="8">Agosto</option>
+          <option value="9">Septiembre</option>
+          <option value="10">Octubre</option>
+          <option value="11">Noviembre</option>
+          <option value="12">Diciembre</option>
+        </select>
+
+        <!-- Año -->
+        <input type="number" id="anioSeleccionado" class="form-control w-auto" 
+               style="max-width: 100px;" min="2020" max="2100" value="2025">
+
+        <!-- Botón Generar/Ver -->
+              <div class="d-flex gap-2 flex-wrap justify-content-center">
+              <button id="btnVer" class="btn btn-primary fw-semibold">
+              <i class="fas fa-eye me-1"></i> Ver Agendamiento
+              </button>
+              <button id="btnGenerar" class="btn btn-success fw-semibold">
+              <i class="fas fa-calendar-plus me-1"></i> Generar Nuevo
+              </button>
+              <button id="btnEliminar" class="btn btn-danger fw-semibold">
+              <i class="fas fa-trash-alt me-1"></i> Eliminar
+              </button>
+</div>
+
+      <!-- Información -->
+      <div class="text-center mb-3">
+        <span class="badge bg-primary me-2">Mes: <span id="mesLabel">-</span></span>
+        <span class="badge bg-secondary me-2">Año: <span id="anioLabel">-</span></span>
+        <span class="badge bg-info text-dark">Estado: <span id="estadoAgendamiento">-</span></span>
+      </div>
+<!-- 📅 Calendario principal -->
+<div id="calendarContainer" class="calendar-container mt-4">
+  <div id="calendarHeader" class="calendar-header-row"></div>
+  <div id="calendarGrid" class="calendar-grid"></div>
+</div>
+
+<!-- 🗂️ Leyenda de turnos (permanece visible) -->
+<div id="calendarLegend" class="leyenda-turnos mt-4">
+  <div class="leyenda-item">
+    <div class="cuadro diurno"></div>
+    <span><strong>D</strong> — Diurno</span>
+  </div>
+  <div class="leyenda-item">
+    <div class="cuadro nocturno"></div>
+    <span><strong>N</strong> — Nocturno</span>
+  </div>
+  <div class="leyenda-item">
+    <div class="cuadro porteria"></div>
+    <span><strong>P</strong> — Portería</span>
+  </div>
+  <div class="leyenda-item">
+    <div class="cuadro rotacion"></div>
+    <span><strong>R</strong> — Rotación</span>
+  </div>
+  <div class="leyenda-item">
+    <div class="cuadro assigned"></div>
+    <span>Día con asignación</span>
+  </div>
+  <div class="leyenda-item">
+    <div class="cuadro pending"></div>
+    <span>Día pendiente</span>
+  </div>
+</div>
+
+
+
+  
+
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script type="module" src="../js/Agendamiento/main.js"></script>
+</body>
+</html>

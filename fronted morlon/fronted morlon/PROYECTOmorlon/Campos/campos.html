@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Gestión de Campos</title>
+  <link rel="stylesheet" href="../css/estilos.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="body-main">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="../PrincipalIndex/index.html">
+        <img src="../assets/img/LOGO.JPG" alt="Logo Morlon" style="height: 50px; border-radius: 50%;">
+      </a>
+      <span class="navbar-text text-white fw-bold">MORLON - Gestión de Campos</span>
+      <div class="ms-auto">
+        <a class="btn btn-outline-light btn-sm" href="../PrincipalIndex/index.html">
+          <i class="fas fa-home"></i> Inicio
+        </a>
+      </div>
+    </div>
+  </nav>
+  <main class="page-container">
+    <div class="container text-center">
+      <div class="content-box">
+        <h2 class="mb-4">Gestión de Campos</h2>
+        <p class="mb-5">Selecciona un módulo para administrar Zonas, EPS, ARL, Novedades o consultar Históricos.</p>
+        <div class="row justify-content-center g-4">
+          <div class="col-md-3"><a href="../Zonas/Zonas.html" class="main-button"><div class="button-icon"><i class="fas fa-map-marked-alt fa-3x"></i></div><div class="button-text"><h3>Zonas</h3><p>Administrar zonas</p></div></a></div>
+          <div class="col-md-3"><a href="../Eps/EPS.HTML" class="main-button"><div class="button-icon"><i class="fas fa-hospital fa-3x"></i></div><div class="button-text"><h3>EPS</h3><p>Gestionar EPS</p></div></a></div>
+          <div class="col-md-3"><a href="../ARL/ARL.html" class="main-button"><div class="button-icon"><i class="fas fa-briefcase-medical fa-3x"></i></div><div class="button-text"><h3>ARL</h3><p>Gestionar ARL</p></div></a></div>
+          <div class="col-md-3"><a href="../Novedades/Novedades.html" class="main-button"><div class="button-icon"><i class="fas fa-bell fa-3x"></i></div><div class="button-text"><h3>Novedades</h3><p>Ver y administrar</p></div></a></div>
+          <!-- <div class="col-md-3"><a href="consultas.html" class="main-button"><div class="button-icon"><i class="fas fa-archive fa-3x"></i></div><div class="button-text"><h3>Históricos</h3><p>Consultas de datos</p></div></a></div>-->
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="main-footer bg-dark text-white mt-5">
+  <div class="container py-3">
+    <div class="row align-items-center">
+      
+      <!-- Columna izquierda: mensaje corporativo -->
+      <div class="col-md-6 text-center text-md-start mb-3 mb-md-0 footer-left">
+        MORLON prestar un servicio oportuno, eficaz y confiable logrando 
+        satisfacer las necesidades de nuestros clientes, garantizándoles 
+        una protección integral
+     </div>
+
+      <!-- Columna derecha: derechos y contacto -->
+      <div class="col-md-6 text-center text-md-end">
+        <span>&copy; 2024 MORLON Cía. de Seguridad Portuaria Ltda.</span>
+        <span class="d-none d-md-inline mx-2">|</span>
+        <span>Contacto: (123) 456-7890</span>
+      </div>
+
+    </div>
+  </div>
+</footer>
+<script src="../js/seguridad.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    verificarAccesoModulo("Campos", { redirigirSiNo: true });
+    bloquearBotonesParaVisitante();
+});
+</script>
+
+
+</body>
+</html>
