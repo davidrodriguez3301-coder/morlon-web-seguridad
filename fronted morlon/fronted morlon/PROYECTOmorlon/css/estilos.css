@@ -1,0 +1,228 @@
+/* ============================================================
+   🌐 ESTILOS GENERALES DEL SISTEMA MORLON (sin agendamiento)
+   ============================================================ */
+
+.body-main {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #ffffff;
+  color: #000;
+  padding-bottom: 60px;
+}
+
+/* ===== Estilos Login ===== */
+.body-login {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #6a5af9, #310dd1, #8181830e);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #fff;
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+nav {
+  width: 100%;
+  background: rgba(0,0,0,0.5);
+  padding: 15px;
+  text-align: center;
+}
+nav a {
+  background: #f3f5f5;
+  color: #000;
+  text-decoration: none;
+  margin: 0 10px;
+  padding: 10px 18px;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+nav a:hover {
+  background: #eb0606;
+  color: #fff;
+  box-shadow: 0 0 12px #eb0303;
+}
+
+.contenedor {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.imagenindex {
+  width: 120px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  transition: transform 0.3s;
+}
+.imagenindex:hover {
+  transform: rotate(5deg) scale(1.05);
+}
+
+/* ===== Contenido Principal ===== */
+main {
+  background: rgba(255,255,255,0.1);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  text-align: center;
+  animation: slideUp 1.2s ease;
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 8px #000;
+}
+
+/* ===== Formularios ===== */
+form label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+form input {
+  width: 80%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+button {
+  background: #1e09db;
+  color: #fff;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: 0.3s;
+}
+button:hover {
+  background: #f1eef0;
+  box-shadow: 0 0 15px #161415;
+}
+
+footer {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.9em;
+  opacity: 0.9;
+}
+
+/* ===== Tablas ===== */
+table {
+  margin: 50px auto;
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 80%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  overflow: hidden;
+}
+thead {
+  background-color: #4CAF50;
+  color: white;
+}
+th, td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+tbody tr {
+  background-color: #f9f9f9;
+  transition: background-color 0.3s, transform 0.3s;
+}
+tbody tr:hover {
+  background-color: #e0f7fa;
+  transform: scale(1.02);
+}
+
+/* ===== Página Principal ===== */
+:root {
+  --color-principal: #D90429;
+  --color-secundario: #2B2D42;
+  --color-fondo: #EDF2F4;
+  --color-texto: #1B1B1E;
+  --color-blanco: #FFFFFF;
+  --navbar-height: 70px;
+  --footer-height: 70px;
+}
+
+.page-container {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  padding: 2rem 0 6rem;
+  min-height: calc(100vh - var(--navbar-height) - var(--footer-height));
+}
+
+.main-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: var(--color-secundario);
+  width: 60%;
+  aspect-ratio: 1 / 1;
+  padding: 1rem;
+  background: var(--color-blanco);
+  border-radius: 20px;
+  box-shadow: 0 8px 15px rgba(43, 45, 66, 0.07);
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+.main-button:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 35px rgba(43, 45, 66, 0.15);
+  background-color: #f8f9fa;
+}
+
+.main-footer {
+  background-color: #212529;
+  color: rgba(255, 255, 255, 0.7);
+  height: var(--footer-height);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main-footer p {
+  margin: 0;
+}
+/* ============================================================
+   ✨ EFECTO LLAMATIVO: VIGILANTE REACTIVADO
+   ============================================================ */
+
+.swal2-popup.swal2-show.swal2-reactivado {
+  border: 3px solid #00c853;
+  box-shadow: 0 0 25px rgba(0, 255, 100, 0.9);
+  animation: parpadeoVerde 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes parpadeoVerde {
+  0% {
+    box-shadow: 0 0 15px rgba(0, 255, 100, 0.7);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(0, 255, 100, 1);
+    transform: scale(1.03);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(0, 255, 100, 0.7);
+    transform: scale(1);
+  }
+}

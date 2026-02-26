@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de Clientes</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/estilos.css">
+  <style>
+    .content-wrapper { padding-bottom: 40px; }
+    .content-box { max-width: 1100px; margin: 0 auto; }
+    .main-button { display:flex; align-items:center; gap:12px; text-decoration:none; padding:14px; border-radius:8px; background:#f5f5f5; color:#000; }
+  </style>
+</head>
+<body class="body-main">
+  <!-- ENCABEZADO -->
+  <div class="container text-center mt-3">
+    <div class="row w-100 align-items-center">
+      <div class="col-3 text-start">
+        <a class="navbar-brand" href="../PrincipalIndex/index.html">
+          <img src="../assets/img/LOGO.JPG" alt="Logo Morlon" style="height: 60px; border-radius: 60%;">
+        </a>
+      </div>
+      <div class="col-6">
+        <h1 class="bienvenidos">Gestión de Clientes</h1>
+      </div>
+      <div class="col-3 text-end">
+        <a class="nav-link text-black" href="../PrincipalIndex/index.html">Volver <i class="fas fa-arrow-left ms-1"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <main class="content-wrapper">
+    <div class="container mt-4">
+      <div class="content-box p-4 shadow-lg rounded bg-light">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h2>Listado de Clientes</h2>
+          <div>
+            <!-- 🔹 CORRECCIÓN: añadí btn-nuevo -->
+            <button class="btn btn-success btn-nuevo" id="btnAgregar">
+              <i class="fas fa-plus"></i> Nuevo Cliente
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-md-6 mb-2">
+            <input type="text" id="buscarInput" class="form-control" placeholder="Buscar por nombre...">
+          </div>
+          <div class="col-md-6 text-md-end">
+            <button class="btn btn-secondary" id="btnVerTodo">
+              <i class="fas fa-list"></i> Visualizar todos
+            </button>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table table-striped align-middle text-center">
+            <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Contacto</th>
+                <th>Dirección</th>
+                <th>Radio</th>
+                <th>Código Omega</th>
+                <th>Servicio</th>
+                <th>Jornada</th>
+                <th>Zona</th>
+                <th>Acciones</th>
+              </tr>
+           </thead>
+            <tbody id="tablaClientes"></tbody>
+          </table>
+        </div>
+
+        <nav>
+          <ul id="paginacion" class="pagination justify-content-center"></ul>
+        </nav>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal Agregar / Editar -->
+  <div class="modal fade" id="clienteModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-dark text-white">
+          <h5 class="modal-title" id="modalTitle">Nuevo Cliente</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          
+<form id="formCliente" class="p-2">
+  <input type="hidden" id="isEdit" value="false">
+
+  <div class="row gy-3">
+
+    <div class="col-md-4 d-none">
+      <label for="idCliente" class="form-label">ID Cliente</label>
+      <input type="text" id="idCliente" class="form-control" readonly>
+    </div>
+
+    <div class="col-md-8">
+      <label for="nombre_cliente" class="form-label">Nombre del Cliente</label>
+      <input type="text" id="nombre_cliente" class="form-control" required>
+    </div>
+
+    <div class="col-md-6">
+      <label for="contacto" class="form-label">Teléfono de Contacto</label>
+      <input type="text" id="contacto" class="form-control" placeholder="Ej: 3104567890 / 6012456789" maxlength="30" required>
+    </div>
+
+    <div class="col-md-6">
+      <label for="direccion" class="form-label">Dirección</label>
+      <input type="text" id="direccion" class="form-control" placeholder="Ej: Calle 45 #12-23" required>
+    </div>
+
+    <div class="col-md-6">
+      <label for="radio" class="form-label">Radio de Comunicación</label>
+      <input type="text" id="radio" class="form-control" placeholder="Ej: Radio 3102554875" maxlength="20" required>
+    </div>
+
+    <div class="col-md-6">
+      <label for="codigo_omega" class="form-label">Código Omega</label>
+      <input type="text" id="codigo_omega" class="form-control" placeholder="Ej: Omega 1, Omega 22" maxlength="20" required>
+    </div>
+
+    <div class="col-md-6">
+      <label for="IdZonas" class="form-label">Zona</label>
+      <select id="IdZonas" class="form-select" required>
+        <option value="">Seleccione zona...</option>
+      </select>
+    </div>
+
+    <div class="col-md-6">
+      <label for="servicio" class="form-label">Tipo de Servicio</label>
+      <select id="servicio" class="form-select" required>
+        <option value="">Seleccione tipo de servicio...</option>
+        <option value="Diurno">Diurno</option>
+        <option value="Nocturno">Nocturno</option>
+        <option value="Diurno/Nocturno">Diurno / Nocturno</option>
+        <option value="Portería">Portería</option>
+        <option value="Rotación">Rotación</option>
+        <option value="Portería/Rotación">Portería / Rotación</option>
+      </select>
+    </div>
+
+    <div class="col-md-6">
+      <label for="jornada" class="form-label">Jornada</label>
+      <select id="jornada" class="form-select" required>
+        <option value="">Seleccione jornada...</option>
+        <option value="8H">8 Horas</option>
+        <option value="12H">12 Horas</option>
+        <option value="16H">16 Horas</option>
+        <option value="24H">24 Horas</option>
+        <option value="Fin de Semana">Fin de Semana</option>
+        <option value="Turno Especial">Turno Especial</option>
+      </select>
+    </div>
+
+  </div>
+
+  <div class="mt-4 d-flex gap-2 justify-content-end">
+
+    <!-- 🔹 CORRECCIÓN: añadí btn-guardar -->
+    <button type="submit" class="btn btn-success btn-guardar" id="saveBtn">
+      <i class="fas fa-save me-1"></i> Guardar
+    </button>
+
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+      <i class="fas fa-times me-1"></i> Cancelar
+    </button>
+  </div>
+</form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="main-footer bg-dark text-white mt-5">
+    <div class="container py-3">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0 footer-left">
+          MORLON prestar un servicio oportuno, eficaz y confiable logrando 
+          satisfacer las necesidades de nuestros clientes, garantizándoles 
+          una protección integral
+        </div>
+
+        <div class="col-md-6 text-center text-md-end">
+          <span>&copy; 2024 MORLON Cía. de Seguridad Portuaria Ltda.</span>
+          <span class="d-none d-md-inline mx-2">|</span>
+          <span>Contacto: (123) 456-7890</span>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+<script src="../js/seguridad.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    verificarAccesoModulo("Clientes", { redirigirSiNo: true });
+    bloquearBotonesParaVisitante(); <!-- 🔹 AÑADIDO -->
+});
+</script>
+
+  <script type="module" src="../js/Clientes/Clientes.js"></script>
+  
+</body>
+</html>

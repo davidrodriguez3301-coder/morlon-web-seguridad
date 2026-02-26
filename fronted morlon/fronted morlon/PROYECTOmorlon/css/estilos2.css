@@ -1,0 +1,256 @@
+/* ===== estilis para login ===== */
+
+
+.body-main {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #ffffff;
+  color: #000;
+  padding-bottom: 60px; /* deja espacio para el footer */
+}
+
+/* ===== Estilos exclusivos para login ===== */
+.body-login {
+ margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #e7e6ec, #e3e1eb, #8181830e);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #fff;
+      animation: fadeIn 1s ease;
+}
+
+
+
+
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    nav {
+      width: 100%;
+      background: rgba(0,0,0,0.5);
+      padding: 15px;
+      text-align: center;
+    }
+    nav a {
+      background: #f3f5f5;
+      color: #000;
+      text-decoration: none;
+      margin: 0 10px;
+      padding: 10px 18px;
+      border-radius: 25px;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+    nav a:hover {
+      background: #eb0606;
+      color: #fff;
+      box-shadow: 0 0 12px #eb0303;
+    }
+    .contenedor {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .imagenindex {
+      width: 120px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      transition: transform 0.3s;
+    }
+    .imagenindex:hover {
+      transform: rotate(5deg) scale(1.05);
+    }
+    main {
+      background: rgba(255,255,255,0.1);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      text-align: center;
+      animation: slideUp 1.2s ease;
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    h1 {
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 8px #000;
+    }
+    form label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+    form input {
+      width: 80%;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    button {
+      background: #1e09db;
+      color: #fff;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #f1eef0;
+      box-shadow: 0 0 15px #161415;
+    }
+    footer {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 0.9em;
+      opacity: 0.9;
+    }
+
+#alertContainer {
+  transition: opacity 0.5s ease-in-out;
+}
+#alertContainer.fade-out {
+  opacity: 0;
+}
+  nav .row {
+  display: flex;
+  flex-direction: column; /* coloca los elementos uno debajo del otro */
+  align-items: center; /* centra horizontalmente */
+  gap: 10px; /* espacio entre logo y texto */
+}
+
+nav .col-3,
+nav .col-6 {
+  width: auto; /* evita que ocupen ancho fijo */
+  text-align: center; /* centra el contenido dentro */
+}
+/* 🔹 Asegura que las alertas sean visibles sobre fondos claros */
+#alertContainer {
+  margin-top: 10px;
+}/*------------------------------------------------------------------*/
+
+/* ===== estilis para login ===== */
+
+
+.body-main {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #ffffff;
+  color: #000;
+  padding-bottom: 60px; /* deja espacio para el footer */
+}
+
+/* ===== Estilos exclusivos para login ===== */
+.body-login {
+ margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #6a6a6d, #616064, #8181830e);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #fff;
+      animation: fadeIn 1s ease;
+}
+
+
+
+
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    nav {
+      width: 100%;
+      background: rgba(0,0,0,0.5);
+      padding: 15px;
+      text-align: center;
+    }
+    nav a {
+      background: #f3f5f5;
+      color: #000;
+      text-decoration: none;
+      margin: 0 10px;
+      padding: 10px 18px;
+      border-radius: 25px;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+    nav a:hover {
+      background: #eb0606;
+      color: #fff;
+      box-shadow: 0 0 12px #eb0303;
+    }
+    .contenedor {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .imagenindex {
+      width: 120px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      transition: transform 0.3s;
+    }
+    .imagenindex:hover {
+      transform: rotate(5deg) scale(1.05);
+    }
+    main {
+      background: rgba(255,255,255,0.1);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      text-align: center;
+      animation: slideUp 1.2s ease;
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    h1 {
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 8px #000;
+    }
+    form label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+    form input {
+      width: 80%;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    button {
+      background: #1e09db;
+      color: #fff;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #f1eef0;
+      box-shadow: 0 0 15px #161415;
+    }
+    footer {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 0.9em;
+      opacity: 0.9;
+    }
